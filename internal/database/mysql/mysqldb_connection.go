@@ -9,6 +9,8 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+var DB *sql.DB
+
 func Connect() {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true",
 		os.Getenv("DB_USER"),
@@ -18,7 +20,8 @@ func Connect() {
 		os.Getenv("DB_NAME"),
 	)
 
-	DB, err := sql.Open("mysql", dsn)
+	var err error
+	DB, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal("Failed to connect to the database: ", err)
 	}
