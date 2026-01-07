@@ -26,9 +26,9 @@ jobs:
 
       - name: Build Binaries
         run: |
-          GOOS=darwin GOARCH=arm64 go build -o dist/myapp-macos main.go
-          GOOS=linux GOARCH=amd64 go build -o dist/myapp-linux main.go
-          GOOS=windows GOARCH=amd64 go build -o dist/myapp-windows.exe main.go
+          GOOS=darwin GOARCH=arm64 go build -o dist/myapp-macos ./cmd/main.go
+          GOOS=linux GOARCH=amd64 go build -o dist/myapp-linux ./cmd/main.go
+          GOOS=windows GOARCH=amd64 go build -o dist/myapp-windows.exe ./cmd/main.go
       
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
